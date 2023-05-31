@@ -1,0 +1,44 @@
+* {
+    padding: 2vw;
+    margin: 2vw;
+    color: blue;
+}
+
+.GridContainer {
+    display: grid;
+    grid-template-areas: 
+    'header header header' 
+    'left right right';
+}
+
+.item1 {
+    grid-area: header;
+    background-color: lightblue;
+    width: 50%;
+
+}
+
+.item2 {
+    grid-area: left;
+    background-color: lightblue;
+}
+
+.item3 {
+    grid-area: right;
+    background-color: lightblue;
+}
+
+@media only screen and (max-width:800px) {
+    .GridContainer {
+        display: grid;
+        grid-template-areas: 
+        'header' 
+        'left'
+        'right';
+    }   
+
+    .item2 {
+        background-color: yellow;
+    }
+
+}
