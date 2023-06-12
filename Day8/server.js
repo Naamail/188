@@ -4,10 +4,13 @@ const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
 const sql = require('./DB/DB');
+const CRUD = require('./DB/CRUD')
+const cookie = require('cookie-parser');
 const port = 2023;
 app.use(express.static(path.join(__dirname, "static")));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(cookie());
 
 //routing 
 app.get('/', (req,res)=>{
@@ -15,27 +18,15 @@ app.get('/', (req,res)=>{
     res.sendFile(path.join(__dirname, "views/index.html"))
 });
 
-app.get('/formHandler', (req,res)=>{
-    //res.send(req.query);
-    // validate info exists
+app.get('/formA', CRUD.createNewUser);
 
-    // pull info
-    const NewSignUp = {
-        email: req.query.UserEmail, 
-        name: req.query.UserName
-    };
-    // run insert query
-    const Q1 = "INSERT INTO SignUps SET ?";
-    sql.query(Q1, NewSignUp, (err, mysqlres)=>{
-        if (err) {
-            console.log(err);
-            res.send("something went wrong");    
-            return;
-        }
-        res.send("thank you!");
-        return;
-    });
-});
+app.post('/formB', CRUD.searchUser);
+
+app.get('/activUser', (req ,res)=>{
+    res.send("hi " + req.cookies.name_user);
+    })
+
+app.get('/selctAllUsers', CRUD.selectAllUsers)
 
 // set up listen
 app.listen(port, ()=>{

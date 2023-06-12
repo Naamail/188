@@ -1,0 +1,13 @@
+extends template 
+block content 
+    h1 Hi Pug 
+    table 
+        tr 
+            th id 
+            th email 
+            th name 
+        each n in V1 
+            tr 
+                td= n.id 
+                td= n.email 
+                td= n.name

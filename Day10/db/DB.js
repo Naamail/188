@@ -12,6 +12,14 @@ const connection = SQL.createConnection({
 connection.connect(error =>{
     if (error) throw error;
     console.log("connected to DB");
+    /// create your tables
+    /*Create a table named "customers":*/
+    var sql = "CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))";
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log("Table created");
+    });
+
 });
 
 module.exports = connection;
