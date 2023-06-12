@@ -67,4 +67,32 @@ const selectAllUsers = (req,res)=>{
     })
 };
 
-module.exports = {createNewUser, searchUser, selectAllUsers}
+const createTable = (req,res)=>{
+    const Q4 = 'CREATE TABLE IF NOT EXISTS `customersAA` (id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, email varchar(255) NOT NULL, name varchar(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8';
+    sql.query(Q4, (err,mysqlres)=>{
+        if (err) {
+            console.log(err);
+            res.status(400).send("cannot find users");
+            return;
+        }
+        res.send(mysqlres);
+        console.log("found table");
+        return;
+    })
+};
+
+const dropTable = (req,res)=>{
+    const Q5 = 'DROP TABLE `customersAA`;';
+    sql.query(Q5, (err,mysqlres)=>{
+        if (err) {
+            console.log(err);
+            res.status(400).send("cannot find users");
+            return;
+        }
+        res.send("table dropped");
+        console.log("table dropped");
+        return;
+    })
+};
+
+module.exports = {createNewUser, searchUser, selectAllUsers, createTable, dropTable}

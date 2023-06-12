@@ -26,7 +26,11 @@ app.get('/activUser', (req ,res)=>{
     res.send("hi " + req.cookies.name_user);
     })
 
-app.get('/selctAllUsers', CRUD.selectAllUsers)
+app.get('/selctAllUsers', CRUD.selectAllUsers);
+
+app.get('/createTable', CRUD.createTable);
+
+app.get('/dropTable', CRUD.dropTable);
 
 // set up listen
 app.listen(port, ()=>{
