@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
-const SQL = require('./db/db');
 const createDB = require('./db/CreateDB_CRUD');
 const port = 2023;
 app.use(express.static(path.join(__dirname, "static")));
@@ -16,7 +15,7 @@ app.get('/', (req,res)=>{
 });
 
 //create DB
-app.get('/createTable', createDB);
+app.get('/createTable', createDB.createTable);
 
 // set up listen
 app.listen(port, ()=>{

@@ -1,18 +1,18 @@
-const mysql = require('mysql2');
 const SQL = require('./db');
 
-module.exports = (req,res)=>{
-    const Q1 = "CREATE TABLE usersAA (name VARCHAR(255),password VARCHAR(255))";
-    SQL.query(Q1, (err, mysqlres)=>{
+
+const createTable = (req,res)=>{
+    const Q1 = 'CREATE TABLE IF NOT EXISTS `customersAAA` (id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, email varchar(255) NOT NULL, name varchar(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8';    
+    SQL.query(Q1, (err,mysqlres)=>{
+        console.log("in query");
         if (err) {
             console.log(err);
-            res.send(err);
+            res.status(400).send(err);
             return;
         }
-        
-        console.log("table created");
-        res.send('table created');
-        return;        
-    }) 
-};
+        res.send("hi");
+        return;
+    })};
+
+module.exports = {createTable};
 
