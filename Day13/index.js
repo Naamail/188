@@ -12,7 +12,22 @@ app.set('views',path.join(__dirname, "views"));
 app.set('view engine', 'pug');
 
 app.get('/', (req,res)=>{
-    res.send("hi");
+    //res.send("hi");
+    //res.render('home');
+    res.redirect('/home')
+});
+
+app.get('/home', (req,res)=>{
+    res.render('home');
+});
+
+
+app.get('/page1', (req,res)=>{
+    res.render('page1');
+});
+
+app.get('/page2', (req,res)=>{
+    res.render('page2');
 });
 
 

@@ -1,0 +1,14 @@
+extends template 
+block content
+    h1 results
+    table 
+        tr 
+            th id 
+            th name 
+            th email 
+        each n in v1 
+            tr  
+                td=n.id 
+                td=n.name 
+                td=n.email
+

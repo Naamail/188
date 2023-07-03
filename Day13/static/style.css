@@ -1,0 +1,19 @@
+* {
+    padding: 2px;
+    color: blue;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    margin-right: 3px;
+}
+
+nav {
+    border: 1px solid blue;
+}
+
+.active {
+    color: white;
+    background-color: blue;
+}
